@@ -7,10 +7,12 @@ const userRouter = require("./routes/userRoute")
 const messageRouter = require("./routes/messageRoute")
 require("./database/dbConnection")
 const cookieParser = require("cookie-parser")
+const path = require("path")
 
 const app = express()
 const server = http.createServer(app)
 
+const __dirname = path.resolve()
 
 app.use(cors({
     origin: "http://localhost:5173",
@@ -89,6 +91,12 @@ app.use(express.json())
 
 app.use("/api", userRouter, messageRouter)
 
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../app/dist")))
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "../app", "dist", "index.html" ))
+    })
+}
 
 server.listen(5000, () => {
     console.log("Server started and running")

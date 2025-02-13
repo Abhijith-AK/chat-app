@@ -1,2 +1,2 @@
-const SERVERURL = "http://localhost:5000"
+const SERVERURL = "/"
 export default SERVERURL;
