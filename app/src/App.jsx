@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom'
 import Auth from './pages/Auth'
 import Home from './pages/Home'
 
-export const socket = io("http://localhost:5000")
+export const socket = io("/")
 window.global = window;  
 function App() {
   window.global = window;
