@@ -12,7 +12,7 @@ const path = require("path")
 const app = express()
 const server = http.createServer(app)
 
-const __dirname = path.resolve()
+// const __dirname = path.resolve()
 
 app.use(cors({
     origin: "http://localhost:5173",
